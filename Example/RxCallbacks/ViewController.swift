@@ -7,18 +7,36 @@
 //
 
 import UIKit
+import Curry
+import RxSwift
+import RxCallbacks
 
 class ViewController: UIViewController {
 
+    let cleanup = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let foo = Foo()
+        Observable<String>
+            .fromCallback(curry(foo.asyncCallWith)(9))
+            .subscribe(onNext: { result in
+                print(result)
+            })
+            .disposed(by: cleanup)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+}
 
+final class Foo {
+    func asyncCallWith(argument: Int, completion: @escaping (String) -> Void) {
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + 1,
+            execute: {
+                completion("foo")
+            }
+        )
+    }
 }
 

@@ -1,11 +1,11 @@
+platform :ios, '9.0'
 use_frameworks!
 
 target 'RxCallbacks_Example' do
   pod 'RxCallbacks', :path => '../'
-
+  pod 'Curry'
   target 'RxCallbacks_Tests' do
     inherit! :search_paths
-
-    
+    pod 'RxSwift', '~> 4.4.0'
   end
 end
