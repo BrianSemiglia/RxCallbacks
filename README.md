@@ -9,7 +9,27 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Usage
+
+```
+// Only argument
+Observable<Void>
+    .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
+    .subscribe(onNext: { })
+    .disposed(by: DisposeBag())
+    
+// Tail of n arguments
+Observable<(Bool, Error?)>
+    .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
+    .subscribe(onNext: { success, error in })
+    .disposed(by: DisposeBag())
+
+// Functions that accept completion handlers AND return non-void types aren't compatible
+Observable<Void>
+    .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
+    .subscribe(onNext: { })
+    .disposed(by: DisposeBag())
+```
 
 ## Installation
 

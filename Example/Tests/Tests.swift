@@ -5,7 +5,25 @@ import RxSwift
 class Tests: XCTestCase {
     
     let cleanup = DisposeBag()
+
+    func testThrow() {
+        Observable<Void>
+            .fromCallback(Foo.fooThrow)
+            .subscribe(onError: { e in
+                XCTAssertTrue(true)
+            })
+            .disposed(by: cleanup)
+    }
     
+    func testZero() {
+        Observable<Void>
+            .fromCallback(Foo.fooZero)
+            .subscribe(onNext: {
+                XCTAssertTrue(true)
+            })
+            .disposed(by: cleanup)
+    }
+
     func testOne() {
         Observable<String>
             .fromCallback(Foo.fooOne)
@@ -143,43 +161,54 @@ class Tests: XCTestCase {
 }
 
 enum Foo {
-    static func fooOne(completion: @escaping (String) -> ()) { return
+    
+    struct Error: Swift.Error {}
+    
+    static func fooThrow(completion: @escaping () -> ()) throws {
+        throw(Error())
+    }
+
+    static func fooZero(completion: @escaping () -> ()) {
+        completion()
+    }
+
+    static func fooOne(completion: @escaping (String) -> ()) {
         completion("foo")
     }
     
-    static func fooTwo(completion: @escaping (String, String) -> ()) { return
+    static func fooTwo(completion: @escaping (String, String) -> ()) {
         completion("foo", "foo")
     }
     
-    static func fooThree(completion: @escaping (String, String, String) -> ()) { return
+    static func fooThree(completion: @escaping (String, String, String) -> ()) {
         completion("foo", "foo", "foo")
     }
     
-    static func fooFour(completion: @escaping (String, String, String, String) -> ()) { return
+    static func fooFour(completion: @escaping (String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo")
     }
     
-    static func fooFive(completion: @escaping (String, String, String, String, String) -> ()) { return
+    static func fooFive(completion: @escaping (String, String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo", "foo")
     }
     
-    static func fooSix(completion: @escaping (String, String, String, String, String, String) -> ()) { return
+    static func fooSix(completion: @escaping (String, String, String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo", "foo", "foo")
     }
     
-    static func fooSeven(completion: @escaping (String, String, String, String, String, String, String) -> ()) { return
+    static func fooSeven(completion: @escaping (String, String, String, String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo", "foo", "foo", "foo")
     }
     
-    static func fooEight(completion: @escaping (String, String, String, String, String, String, String, String) -> ()) { return
+    static func fooEight(completion: @escaping (String, String, String, String, String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo")
     }
     
-    static func fooNine(completion: @escaping (String, String, String, String, String, String, String, String, String) -> ()) { return
+    static func fooNine(completion: @escaping (String, String, String, String, String, String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo")
     }
     
-    static func fooTen(completion: @escaping (String, String, String, String, String, String, String, String, String, String) -> ()) { return
+    static func fooTen(completion: @escaping (String, String, String, String, String, String, String, String, String, String) -> ()) {
         completion("foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo")
     }
 }
