@@ -11,7 +11,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Usage
 
-```
+```swift
 // Only argument
 Observable<Void>
     .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
@@ -42,7 +42,7 @@ pod 'RxCallbacks'
 
 ## Author
 
-brian.semiglia@gmail.com, brian.semiglia@gmail.com
+brian.semiglia@gmail.com
 
 ## License
 
