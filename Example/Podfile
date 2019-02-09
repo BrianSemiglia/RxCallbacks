@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RxCallbacks_Example' do
+  pod 'RxCallbacks', :path => '../'
+
+  target 'RxCallbacks_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
