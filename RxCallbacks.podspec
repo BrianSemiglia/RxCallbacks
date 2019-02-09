@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.description      = 'Convert callback closures to observables using the provided static `fromCallback function.'
   s.homepage         = 'https://github.com/briansemiglia/RxCallbacks'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'brian.semiglia@gmail.com' => 'brian.semiglia@gmail.com' }
+  s.author           = { 'Brian Semiglia' => 'brian.semiglia@gmail.com' }
   s.source           = { :git => 'https://github.com/briansemiglia/RxCallbacks.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/brians_'
   s.ios.deployment_target = '8.0'
