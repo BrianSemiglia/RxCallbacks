@@ -9,22 +9,13 @@
 
 ```swift
 // Function with single argument of completion handler
-Observable<Void>
-    .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
-    .subscribe(onNext: { })
-    .disposed(by: DisposeBag())
+let x: Observable<Void> = .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
     
 // Function with n arguments, the last being a completiong handler
-Observable<(Bool, Error?)>
-    .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
-    .subscribe(onNext: { success, error in })
-    .disposed(by: DisposeBag())
+let y: Observable<(Bool, Error?)> = .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
 
 // Functions that accept completion handlers AND return non-void types aren't compatible
-Observable<Void>
-    .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
-    .subscribe(onNext: { })
-    .disposed(by: DisposeBag())
+let z: Observable<Void> = .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
 ```
 
 ## Example
