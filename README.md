@@ -8,13 +8,13 @@
 ## Usage
 
 ```swift
-// Only argument
+// Function with single argument of completion handler
 Observable<Void>
     .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
     .subscribe(onNext: { })
     .disposed(by: DisposeBag())
     
-// Tail of n arguments
+// Function with n arguments, the last being a completiong handler
 Observable<(Bool, Error?)>
     .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
     .subscribe(onNext: { success, error in })
