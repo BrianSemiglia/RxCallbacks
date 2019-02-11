@@ -5,10 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/RxCallbacks.svg?style=flat)](https://cocoapods.org/pods/RxCallbacks)
 [![Platform](https://img.shields.io/cocoapods/p/RxCallbacks.svg?style=flat)](https://cocoapods.org/pods/RxCallbacks)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Usage
 
 ```swift
@@ -30,6 +26,10 @@ Observable<Void>
     .subscribe(onNext: { })
     .disposed(by: DisposeBag())
 ```
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 
