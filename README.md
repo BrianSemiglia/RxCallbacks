@@ -16,6 +16,11 @@ let y: Observable<(Bool, Error?)> = .fromCallback(curry(PHPhotoLibrary.shared().
 
 // Functions that accept completion handlers AND return non-void types aren't compatible
 let z: Observable<Void> = .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
+
+// Because some functions produce multiple callbacks, the Observable returned by `.fromCallback`
+// intentionally avoids producing a completion event. To achieve this, the caller may use the 
+// `take` operator to produce this event.
+let n = Observable<PartialData>.fromCallback(Network.progressiveDownload).take(3)
 ```
 
 ## Example
