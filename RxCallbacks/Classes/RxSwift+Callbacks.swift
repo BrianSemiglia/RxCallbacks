@@ -3,7 +3,7 @@ import RxSwift
 extension ObservableType {
     public static func fromCallback(
         _ input: @escaping (@escaping () -> Void) throws -> Void
-        ) -> Observable<Void> {
+    ) -> Observable<Void> {
         let converted: (@escaping (@escaping () -> Void) throws -> Void) -> () -> Observable<Void> = { onCallback in
             return {
                 Observable<Void>.create { o in
@@ -63,7 +63,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C>(
         _ input: @escaping (@escaping (A, B, C) -> Void) throws -> Void
-        ) -> Observable<(A, B, C)> {
+    ) -> Observable<(A, B, C)> {
         let converted: (@escaping (@escaping (A, B, C) -> Void) throws -> Void) -> () -> Observable<(A, B, C)> = { onCallback in
             return {
                 return .create { o in
@@ -83,7 +83,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D>(
         _ input: @escaping (@escaping (A, B, C, D) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D)> {
+    ) -> Observable<(A, B, C, D)> {
         let converted: (@escaping (@escaping (A, B, C, D) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D)> = { onCallback in
             return {
                 return .create { o in
@@ -103,7 +103,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D, E>(
         _ input: @escaping (@escaping (A, B, C, D, E) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D, E)> {
+    ) -> Observable<(A, B, C, D, E)> {
         let converted: (@escaping (@escaping (A, B, C, D, E) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D, E)> = { onCallback in
             return {
                 return .create { o in
@@ -123,7 +123,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D, E, F>(
         _ input: @escaping (@escaping (A, B, C, D, E, F) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D, E, F)> {
+    ) -> Observable<(A, B, C, D, E, F)> {
         let converted: (@escaping (@escaping (A, B, C, D, E, F) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D, E, F)> = { onCallback in
             return {
                 return .create { o in
@@ -143,7 +143,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D, E, F, G>(
         _ input: @escaping (@escaping (A, B, C, D, E, F, G) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D, E, F, G)> {
+    ) -> Observable<(A, B, C, D, E, F, G)> {
         let converted: (@escaping (@escaping (A, B, C, D, E, F, G) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D, E, F, G)> = { onCallback in
             return {
                 return .create { o in
@@ -163,7 +163,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D, E, F, G, H>(
         _ input: @escaping (@escaping (A, B, C, D, E, F, G, H) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D, E, F, G, H)> {
+    ) -> Observable<(A, B, C, D, E, F, G, H)> {
         let converted: (@escaping (@escaping (A, B, C, D, E, F, G, H) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D, E, F, G, H)> = { onCallback in
             return {
                 return .create { o in
@@ -183,7 +183,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D, E, F, G, H, I>(
         _ input: @escaping (@escaping (A, B, C, D, E, F, G, H, I) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D, E, F, G, H, I)> {
+    ) -> Observable<(A, B, C, D, E, F, G, H, I)> {
         let converted: (@escaping (@escaping (A, B, C, D, E, F, G, H, I) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D, E, F, G, H, I)> = { onCallback in
             return {
                 return .create { o in
@@ -203,7 +203,7 @@ extension ObservableType {
     
     public static func fromCallback<A, B, C, D, E, F, G, H, I, J>(
         _ input: @escaping (@escaping (A, B, C, D, E, F, G, H, I, J) -> Void) throws -> Void
-        ) -> Observable<(A, B, C, D, E, F, G, H, I, J)> {
+    ) -> Observable<(A, B, C, D, E, F, G, H, I, J)> {
         let converted: (@escaping (@escaping (A, B, C, D, E, F, G, H, I, J) -> Void) throws -> Void) -> () -> Observable<(A, B, C, D, E, F, G, H, I, J)> = { onCallback in
             return {
                 return .create { o in
