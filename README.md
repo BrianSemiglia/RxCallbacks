@@ -5,31 +5,27 @@
 [![License](https://img.shields.io/cocoapods/l/RxCallbacks.svg?style=flat)](https://cocoapods.org/pods/RxCallbacks)
 [![Platform](https://img.shields.io/cocoapods/p/RxCallbacks.svg?style=flat)](https://cocoapods.org/pods/RxCallbacks)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Usage
 
 ```swift
-// Only argument
-Observable<Void>
-    .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
-    .subscribe(onNext: { })
-    .disposed(by: DisposeBag())
+// Function with single argument of completion handler
+let x: Observable<Void> = .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
     
-// Tail of n arguments
-Observable<(Bool, Error?)>
-    .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
-    .subscribe(onNext: { success, error in })
-    .disposed(by: DisposeBag())
+// Function with n arguments, the last being a completiong handler
+let y: Observable<(Bool, Error?)> = .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
 
 // Functions that accept completion handlers AND return non-void types aren't compatible
-Observable<Void>
-    .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
-    .subscribe(onNext: { })
-    .disposed(by: DisposeBag())
+let z: Observable<Void> = .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
+
+// Because some functions produce multiple callbacks, the Observable returned by `.fromCallback`
+// intentionally avoids producing a completion event. To achieve this, the caller may use the 
+// `take` operator to produce this event.
+let n = Observable<PartialData>.fromCallback(Network.progressiveDownload).take(3)
 ```
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 
