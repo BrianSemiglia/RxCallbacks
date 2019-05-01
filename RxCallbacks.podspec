@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/brians_'
   s.ios.deployment_target = '8.0'
   s.source_files = 'RxCallbacks/Classes/**/*'
-  s.swift_version = '4.2'
-  s.dependency 'RxSwift', '~> 4.4.0'
+  s.swift_version = '5.0'
+  s.dependency 'RxSwift', '~> 5.0'
 end
