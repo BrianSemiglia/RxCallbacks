@@ -6,6 +6,5 @@ target 'RxCallbacks_Example' do
   pod 'Curry'
   target 'RxCallbacks_Tests' do
     inherit! :search_paths
-    pod 'RxSwift', '~> 5.0'
   end
 end
