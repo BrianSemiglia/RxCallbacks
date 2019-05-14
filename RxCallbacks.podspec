@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxCallbacks'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'An RxSwift extension for converting callbacks to observables.'
   s.description      = 'Convert callback closures to observables using the provided static `fromCallback function.'
   s.homepage         = 'https://github.com/briansemiglia/RxCallbacks'
