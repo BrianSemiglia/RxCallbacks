@@ -11,10 +11,10 @@
 // Function with single argument of completion handler
 let x: Observable<Void> = .fromCallback(PHPhotoLibrary.shared().performChangesAndWait)
     
-// Function with n arguments, the last being a completiong handler
+// Function with n arguments, the last being a completion handler
 let y: Observable<(Bool, Error?)> = .fromCallback(curry(PHPhotoLibrary.shared().performChanges)({ /* changes */ }))
 
-// Functions that accept completion handlers AND return non-void types aren't compatible
+// Functions that accept completion handlers AND return non-void types aren't compatible ❌
 let z: Observable<Void> = .fromCallback(curry(URLSession.shared().dataTask)(URL(string: "")!))
 
 // Because some functions produce multiple callbacks, the Observable returned by `.fromCallback`
